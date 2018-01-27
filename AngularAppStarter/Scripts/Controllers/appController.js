@@ -1,12 +1,17 @@
 ﻿var myApp = angular.module('myApp', []);
 
-myApp.controller('appController', ['$scope', function ($scope) {
+myApp.controller('appController', function ($scope, $interval, $filter) {
     $scope.greeting = 'Order Life Cycle';
     $scope.OrderCreated = getRandomVal(150, 300);
     $scope.OrderFullfilled = getRandomVal(150, 300);
     $scope.ReadyForShipment = getRandomVal(150, 300);
     $scope.OrderShipped = getRandomVal(400, 500);
-    $scope.selectedprop = { label: "1 Minute", value: 1 };
+    $scope.selectedprop = { label: "10 Minute", value: 10 };
+
+    setTimeout(function () {
+        location.reload();
+    }, $scope.selectedprop.value * 1000 * 100);
+
 
     //TimerSelect
     $scope.setSelected = function (prop) { $scope.selectedprop = prop; };
@@ -18,11 +23,9 @@ myApp.controller('appController', ['$scope', function ($scope) {
                         { label: "1 Hour", value: 60 }
                        ];
     
-
-
     function getRandomVal(min, max) {
         min = Math.ceil(min);
         max = Math.floor(max);
         return Math.floor(Math.random() * (max - min + 1)) + min;
     }
-}]);
+});

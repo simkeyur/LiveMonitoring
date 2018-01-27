@@ -12,8 +12,11 @@
             <ul id='dropdown1' class='dropdown-content'>
                 <li ng-repeat="prop in props" ng-click="setSelected(prop)" ng-class="{selected: prop == selectedprop}" ng-cloak="">{{prop.label}}</li>
             </ul>
-            <br/><br/>
-                 <b>Selected RefreshRate:</b>  {{selectedprop.label}}
+            <br /><br />
+            <b>Selected RefreshRate:</b>  {{selectedprop.label}}
+
+            <div ng-bind="Message">
+            </div>
         </div>
         
 
