@@ -1,13 +1,13 @@
 ﻿var myApp = angular.module('myApp', []);
 
-myApp.controller('appController', function ($scope, $interval, $filter) {
+myApp.controller('appController', ['$scope', function ($scope) {
     $scope.greeting = 'Order Life Cycle';
     $scope.OrderCreated = getRandomVal(150, 300);
     $scope.OrderFullfilled = getRandomVal(150, 300);
     $scope.ReadyForShipment = getRandomVal(150, 300);
     $scope.OrderShipped = getRandomVal(400, 500);
     $scope.selectedprop = { label: "10 Minute", value: 10 };
-
+    
     setTimeout(function () {
         location.reload();
     }, $scope.selectedprop.value * 1000 * 100);
@@ -28,4 +28,4 @@ myApp.controller('appController', function ($scope, $interval, $filter) {
         max = Math.floor(max);
         return Math.floor(Math.random() * (max - min + 1)) + min;
     }
-});
+}]);
